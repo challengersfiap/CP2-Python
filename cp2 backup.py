@@ -1,31 +1,10 @@
 import random
 
 def validacao_option(o):
-    while o != "1" and o != "2" and o != "3":
+    while o != "!" and option != "2" and option != "3":
         print("-=" * 25)
         o = input("Opção inválida! Selecione novamente!\n1- Fazer seguro da bike\n2- Saber informação sobre seguro de bike\n3- Sair\n")
         print("-=" * 25)
-    return o
-
-def info_correta(i, nome, cpf, modelo, cor, nserie):
-    print('-='*25)
-    mensagem = "Nome: {}\nCPF: {}\nModelo: {}\nCor: {}\nNúmero de série: {}".format(nome, cpf, modelo, cor, nserie)
-    print(mensagem)
-    i = input("As informações estão corretas agora? [S/N] ")
-    while i != "S" and i != "N":
-        i = input("Opção inválida\nAs informações estão corretas agora? [S/N] ").replace(" ", "").upper()
-    return i
-
-def validacao_mudanca():
-    print("-=" *25)
-    m = input("Qual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
-    print("-=" *25)
-    while m != "1" and m != "2" and m != "3" and m != "4" and m != "5":
-        print("-=" *25)
-        m = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
-        print("-=" *25)
-    return m
-
 
 repete = 0
 
@@ -33,8 +12,10 @@ print("-="*25)
 option = input("1- Fazer seguro da bike\n2- Saber informação sobre seguro de bike\n3- Sair\n")
 print("-="*25)
 
-if option != "1" and option != "2" and option != "3":
-    option = validacao_option(option)
+while option != "1" and option != "2" and option != "3":
+    print("-="*25)
+    option = input("Opção inválida! Selecione novamente!\n1- Fazer seguro da bike\n2- Saber informação sobre seguro de bike\n3- Sair\n")
+    print("-="*25)
 
 #while com a condição da variavel "repete", para caso o usuário queira tentar novamente se o seguro não for aprovado
 while repete == 0:
@@ -53,7 +34,7 @@ while repete == 0:
 
         #mostrando os dados que o cliente preencheu e em seguida perguntando se deseja alterar alguma coisa
         print(f"Verifique se as informações estão corretas:\nNome: {cliente_nome}\nCPF: {cliente_cpf}\nModelo: {bike_modelo}\nCor: {bike_cor}\nNúmero de série: {bike_nserie}")
-        correto = input("Todas informações estão corretas? [S/N] ").replace(" ", "").upper()
+        correto = input("Todas informações estão corretas? [S/N]").replace(" ", "").upper()
 
         while correto != "S" and correto != "N":
             correto = ("Opção inválida!\nTodas as informações estão corretas? [S/N] ").replace(" ", "").upper()
@@ -63,42 +44,59 @@ while repete == 0:
 
         #pedindo o campo que o cliente deseja alterar
         elif correto == "N":
-            mudanca = validacao_mudanca()
+            print("-="*25)
+            mudanca = input("Qual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+            print("-="*25)
+
+            while mudanca != "1" and mudanca != "2" and mudanca != "3" and mudanca != "4" and mudanca != "5":
+                print("-="*25)
+                mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                print("-="*25)
             
             #laço de repetição cujo utilidade seja para o cliente alterar os dados quantas vezes quiser
             while correto == "N":
                 if mudanca == "1":
-                    cliente_nome = input("Nome: ")
-                    correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
+                    cliente_nome = input("Nome:")
+                    print(f"Verifique se as informações estão corretas:\nNome: {cliente_nome}\nCPF: {cliente_cpf}\nModelo: {bike_modelo}\nCor: {bike_cor}\nNúmero de série: {bike_nserie}")
+                    correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
+                    while correto != "S" and correto != "N":
+                        correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
 
                     if correto == "N":
                         mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
 
                 elif mudanca == "2":
                     cliente_cpf = input("CPF: ")
-                    correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
-
+                    print(f"Verifique se as informações estão corretas:\nNome: {cliente_nome}\nCPF: {cliente_cpf}\nModelo: {bike_modelo}\nCor: {bike_cor}\nNúmero de série: {bike_nserie}")
+                    correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
+                    while correto != "S" and correto != "N":
+                        correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
                     if correto == "N":
                         mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
 
                 elif mudanca == "3":
                     bike_modelo = input("Modelo:")
-                    correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
-
+                    print(f"Verifique se as informações estão corretas:\nNome: {cliente_nome}\nCPF: {cliente_cpf}\nModelo: {bike_modelo}\nCor: {bike_cor}\nNúmero de série: {bike_nserie}").replace(" ", "").upper()
+                    while correto != "S" and correto != "N":
+                        correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
                     if correto == "N":
                         mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
 
                 elif mudanca == "4":
                     bike_cor = ("Cor: ")
-                    correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
-
+                    print(f"Verifique se as informações estão corretas:\nNome: {cliente_nome}\nCPF: {cliente_cpf}\nModelo: {bike_modelo}\nCor: {bike_cor}\nNúmero de série: {bike_nserie}")
+                    correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
+                    while correto != "S" and correto != "N":
+                        correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
                     if correto == "N":
                         mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
 
                 else:
                     bike_nserie = input("Número de série: ")
-                    correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
-
+                    print(f"Verifique se as informações estão corretas:\nNome: {cliente_nome}\nCPF: {cliente_cpf}\nModelo: {bike_modelo}\nCor: {bike_cor}\nNúmero de série: {bike_nserie}")
+                    correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
+                    while correto != "S" and correto != "N":
+                        correto = input("As informações estão corretas agora? [S/N] ").replace(" ", "").upper()
                     if correto == "N":
                         mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
 
@@ -122,7 +120,7 @@ while repete == 0:
                 print("-="*25)
 
         #↓↓ Na parte de dano estético não fiz o randint por conta que a porto não cobre danos estéticos, apenas funcionais
-        bike_dano_estetico = input("A bike possui algum dano estético? [S/N] ").replace(" ", "").upper()
+        bike_dano_estetico = input("A bike possui algum dano estético?[S/N] ").replace(" ", "").upper()
 
         while bike_dano_estetico != "S" and bike_dano_estetico != "N":
             print("Opção inválida!")
