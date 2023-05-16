@@ -1,5 +1,11 @@
 import random
 
+def validacao_option(o):
+    while o != "!" and option != "2" and option != "3":
+        print("-=" * 25)
+        o = input("Opção inválida! Selecione novamente!\n1- Fazer seguro da bike\n2- Saber informação sobre seguro de bike\n3- Sair\n")
+        print("-=" * 25)
+
 repete = 0
 
 print("-="*25)
