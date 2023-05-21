@@ -11,7 +11,7 @@ def info_correta(i, nome, cpf, modelo, cor, nserie):
     print('-='*25)
     mensagem = "Nome: {}\nCPF: {}\nModelo: {}\nCor: {}\nNúmero de série: {}".format(nome, cpf, modelo, cor, nserie)
     print(mensagem)
-    i = input("As informações estão corretas agora? [S/N] ")
+    i = input("As informações estão corretas agora? [S/N] ").replace(" ","").upper()
     while i != "S" and i != "N":
         i = input("Opção inválida\nAs informações estão corretas agora? [S/N] ").replace(" ", "").upper()
     return i
@@ -22,7 +22,7 @@ def validacao_mudanca():
     print("-=" *25)
     while m != "1" and m != "2" and m != "3" and m != "4" and m != "5":
         print("-=" *25)
-        m = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+        m = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "").upper()
         print("-=" *25)
     return m
 
@@ -56,7 +56,7 @@ while repete == 0:
         correto = input("Todas informações estão corretas? [S/N] ").replace(" ", "").upper()
 
         while correto != "S" and correto != "N":
-            correto = ("Opção inválida!\nTodas as informações estão corretas? [S/N] ").replace(" ", "").upper()
+            correto = input("Opção inválida!\nTodas as informações estão corretas? [S/N] ").replace(" ", "").upper()
         
         if correto == "S":
             print("-="*25)
@@ -68,39 +68,53 @@ while repete == 0:
             #laço de repetição cujo utilidade seja para o cliente alterar os dados quantas vezes quiser
             while correto == "N":
                 if mudanca == "1":
+                    print('-='*25)
                     cliente_nome = input("Nome: ")
                     correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
 
                     if correto == "N":
-                        mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
+                        mudanca = input("Qual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
 
                 elif mudanca == "2":
                     cliente_cpf = input("CPF: ")
                     correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
 
                     if correto == "N":
-                        mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
+                        mudanca = input("Qual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
 
                 elif mudanca == "3":
+                    print('-='*25)
                     bike_modelo = input("Modelo:")
                     correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
 
                     if correto == "N":
-                        mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
+                        mudanca = input("Qual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
 
                 elif mudanca == "4":
+                    print('-='*25)
                     bike_cor = ("Cor: ")
                     correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
 
                     if correto == "N":
-                        mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
+                        mudanca = input("Qual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
 
                 else:
+                    print('-='*25)
                     bike_nserie = input("Número de série: ")
                     correto = info_correta(correto, cliente_nome, cliente_cpf, bike_modelo, bike_cor, bike_nserie)
 
                     if correto == "N":
+                        print('-='*25)
                         mudanca = input("Opção inválida!\nQual informação deseja mudar:\n1-Nome\n2-CPF\n3-Modelo:\n4-Cor:\n5-Número de série\n").replace(" ", "")
+                        print('-='*25)
 
         bike_dano = input("A bike possui algum dano que afete o funcionamento? [S/N] ").replace(" ", "").upper()#"Transformando" a variavel em maiuscula para evitar erro na hora do if ↓↓
 
